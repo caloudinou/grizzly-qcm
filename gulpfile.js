@@ -12,13 +12,14 @@ var rename      = require("gulp-rename");
 var uglify      = require('gulp-uglify');
 var cleancss    = require('gulp-clean-css');
 var htmlmin     = require('gulp-htmlmin');
-
+var clean       = require('gulp-clean');
+var bower       = require('gulp-bower');
 
 
 /**
  * concat all files sass
  */
-gulp.task('concatSass',function(){
+gulp.task('dev-concat-sass',function(){
     
   return gulp.src(['app/scss/main.scss','app/components/**/*.scss'])
     .pipe(concat('style.scss'))
@@ -29,7 +30,7 @@ gulp.task('concatSass',function(){
 /**
  * Convert Scss to css
  */
-gulp.task('sass', function () {
+gulp.task('build-scss-to-css', function () {
 
   return gulp.src('app/scss/style.scss')
     .pipe(sass().on('error', sass.logError))
@@ -39,7 +40,7 @@ gulp.task('sass', function () {
 /**
 * minify and clean the file style.css
 */
-gulp.task('cleanCss', function () {
+gulp.task('build-clean-css', function () {
 
   return gulp.src('app_prod/src/css/style.css')
       
@@ -64,7 +65,7 @@ gulp.task('cleanCss', function () {
 /**
  * Concat all app js files into one file
  */
-gulp.task('concatJs', function() {
+gulp.task('build-concat-js', function() {
     return gulp.src([
           'app/config/app_mapp.js',
           'app/components/**/module.*.namespace.js',
@@ -84,7 +85,7 @@ gulp.task('concatJs', function() {
 /**
  * Compress app.js and save it as app.min.js
  */
-gulp.task('compressJs', function() {
+gulp.task('build-compress-js', function() {
     return gulp.src('app_prod/src/js/app.js')
     .pipe(uglify())
     .pipe(rename({
@@ -99,8 +100,8 @@ gulp.task('compressJs', function() {
 /**
  * Compress html files
  */
-gulp.task('compressHtml', function() {
-    return gulp.src('./app/**/*.html')
+gulp.task('build-minify-html', function() {
+    return gulp.src('./app/components/**/*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('./app_prod/src/views/'));
 });
@@ -108,17 +109,42 @@ gulp.task('compressHtml', function() {
 /**
  * Compile index.html files
  */
-gulp.task('indexCompile', function() {
+gulp.task('build-index', function() {
     return gulp.src(['app/sources/html/header.html','app/sources/html/section.html','app/sources/html/footer.html'])
     .pipe(concat('index.html'))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('app_prod/'));
 });
 
-
-gulp.task('init', function() {
+/**
+ * copy the htaccess
+ */
+gulp.task('build-init', function() {
     return gulp.src('app/.htaccess')
     .pipe(gulp.dest('app_prod'));
+});
+/**
+ * launch bower install with gulp
+ */
+gulp.task('bower', function() {
+  return bower();
+});
+
+/**
+ * default task css
+ */
+gulp.task('default-css', ['dev-concat-sass','build-scss-to-css','build-clean-css']);
+
+/**
+ * default task html
+ */
+gulp.task('default-html', ['build-minify-html', 'build-index']);
+
+/**
+ * this default task will launch all task of initialization
+ */
+gulp.task('default', function () {
+    gulp.start('bower', 'build-init', 'default-css', 'build-concat-js', 'build-compress-js', 'default-html');
 });
 
 
@@ -126,7 +152,14 @@ gulp.task('init', function() {
  * Watch every scss / js modification and execute scss or js tasks
  */
 gulp.task('watch', function () {
-    gulp.watch(['./src/scss/*.scss','./app/**/*.scss'], ['concatSass','sass','cleanCss']);
-    gulp.watch(['app/*.js', 'app/**/*.js'], ['concatJs','compressJs']);
-    gulp.watch(['app/**/*.html'],['compressHtml', 'indexCompile']);
+    gulp.watch(['./src/scss/*.scss','./app/**/*.scss'], ['default-css']);
+    gulp.watch(['app/*.js', 'app/**/*.js'], ['build-concat-js','build-compress-js']);
+    gulp.watch(['app/**/*.html'],['default-html']);
+});
+
+/**
+ * del the prod
+ */
+gulp.task('build-clean', function() {
+    return gulp.src('app_prod').pipe(clean());
 });

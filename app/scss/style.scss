@@ -1,0 +1,7 @@
+.test{
+    @extend .message;
+    
+    color:$primary-color;
+    text-align: center;
+    @include border-radius(10px);
+}
