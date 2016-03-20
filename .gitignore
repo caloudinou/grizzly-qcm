@@ -5,6 +5,7 @@ npm-debug.log*
 
 # Production Directory
 app_prod
+app/sources/scss/style.scss
 
 # Runtime data
 pids

@@ -21,9 +21,9 @@ var bower       = require('gulp-bower');
  */
 gulp.task('dev-concat-sass',function(){
     
-  return gulp.src(['app/scss/main.scss','app/components/**/*.scss'])
+  return gulp.src(['app/sources/scss/main.scss','app/components/**/*.scss'])
     .pipe(concat('style.scss'))
-    .pipe(gulp.dest('./app/scss/'));
+    .pipe(gulp.dest('./app/sources/scss/'));
     
 });
 
@@ -32,7 +32,7 @@ gulp.task('dev-concat-sass',function(){
  */
 gulp.task('build-scss-to-css', function () {
 
-  return gulp.src('app/scss/style.scss')
+  return gulp.src('app/sources/scss/style.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./app_prod/src/css/'));
     
