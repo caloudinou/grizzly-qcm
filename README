@@ -1,0 +1,24 @@
+version 1.0 Grizzly-QCM (GQCM)
+- pascalou@gmail.com
+
+
+installation
+
+1: installer ruby / sass / npm
+2: npm 		install
+3: bower 	install
+4: gulp 	sass
+6: configurer access	server 	   => config/server_api.json 
+
+
+7: configurer route		api 	   => config/route_api.json 
+8: configurer setting wepApp	   => config/parameters.json 
+
+
+============================================
+							NOMENTELATURE
+============================================
+
+Module => lower camelCase
+Controller => PascalCase
+traduction =>  Underscore / UpperCase

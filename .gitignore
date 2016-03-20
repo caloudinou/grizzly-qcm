@@ -3,6 +3,9 @@ logs
 *.log
 npm-debug.log*
 
+# Production Directory
+app_prod
+
 # Runtime data
 pids
 *.pid

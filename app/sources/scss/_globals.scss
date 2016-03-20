@@ -1,0 +1,11 @@
+// variables
+$primary-color: #333;
+$font-family: Arial;
+
+//mixing
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
