@@ -4,7 +4,7 @@
   "authors": [
     "caloudinou <pascalou@gmail.com>"
   ],
-  "description": "cegedim kadrige idrop app",
+  "description": "grizzly-qcm",
   "moduleType": [
     "globals",
     "node"
@@ -18,12 +18,12 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.4.9",
-    "angular-animate": "1.4.9",
-    "angular-aria": "1.4.9",
-    "angular-route": "1.4.9",
-    "angular-sanitize": "1.4.9",
-    "angular-touch": "1.4.9",
-    "angular-material": "1.0.3"
+    "angular": "^1.4.9",
+    "angular-animate": "^1.4.9",
+    "angular-aria": "^1.4.9",
+    "angular-route": "^1.4.9",
+    "angular-sanitize": "^1.4.9",
+    "angular-touch": "^1.4.9",
+    "angular-material": "^1.0.3"
   }
 }
