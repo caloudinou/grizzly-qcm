@@ -5,7 +5,8 @@
      */
     'use strict';
 
-    angular.module(angular.mApp.name).config(['$locationProvider',
+    angular.module(angular.mApp.NAMESPACE.app.name)
+        .config(['$locationProvider',
         function ($locationProvider) {
 
             //If html 5 is enabled (navigator is compatible), we enable clean urls

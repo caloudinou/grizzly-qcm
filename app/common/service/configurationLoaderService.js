@@ -5,7 +5,7 @@
 (function (angular) {
     'use strict';
 
-    angular.module(angular.mApp.name).factory('ConfigurationLoaderService', ['$rootScope', '$http',
+    angular.module(angular.mApp.NAMESPACE.app.name).factory('ConfigurationLoaderService', ['$rootScope', '$http',
         function ($rootScope, $http) {
 
             function init(){

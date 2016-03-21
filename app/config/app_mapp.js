@@ -1,11 +1,14 @@
 (function (angular) {
     'use strict';
 
-    angular.mApp = angular.mApp || {};
+    var mApp = angular.mApp = angular.mApp || {};
 
-    angular.mApp={
-            name: 'grizzlyLTDA-apps',
-            NAMESPACE:{}
+        angular.mApp.NAMESPACE={
+            app : {
+                name : 'grizzlyLTDA-apps',
+                prod : '/src/views',
+                dev  : '/components' 
+            }
         };
     
 })(angular);

@@ -5,7 +5,7 @@
 (function (angular) {
     'use strict';
 
-    angular.module(angular.mApp.name).filter('capitalize', function () {
+    angular.module(angular.mApp.NAMESPACE.app.name).filter('capitalize', function () {
         return function (text){
             return (text != null ? text.substring(0,1).toUpperCase()+text.substring(1):'');
         }

@@ -69,10 +69,10 @@ gulp.task('build-concat-js', function() {
     return gulp.src([
           'app/config/app_mapp.js',
           'app/components/**/module.*.namespace.js',
+          'app/components/**/controllers/*.js',
           'app/components/**/module.*.route.js',
-          'app/components/controllers/*.js',
-          'app/common/*.js',
           'app/app_start.js',
+          'app/common/**/*.js',
           'app/config/app_run.js',
           'app/config/app_default_route.js',
           'app/config/app_html5.js'
@@ -110,7 +110,7 @@ gulp.task('build-minify-html', function() {
  * Compile index.html files
  */
 gulp.task('build-index', function() {
-    return gulp.src(['app/sources/html/header.html','app/sources/html/section.html','app/sources/html/footer.html'])
+    return gulp.src(['app/sources/html/header.html','app/sources/html/body.html','app/sources/html/footer.html'])
     .pipe(concat('index.html'))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('app_prod/'));
@@ -153,7 +153,7 @@ gulp.task('default', function () {
  */
 gulp.task('watch', function () {
     gulp.watch(['./src/scss/*.scss','./app/**/*.scss'], ['default-css']);
-    gulp.watch(['app/*.js', 'app/**/*.js'], ['build-concat-js','build-compress-js']);
+    gulp.watch(['app/*.js', 'app/**/*.js'], ['build-concat-js']);
     gulp.watch(['app/**/*.html'],['default-html']);
 });
 

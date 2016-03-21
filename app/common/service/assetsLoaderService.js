@@ -5,9 +5,9 @@
  */
 
 (function (angular) {
-    'use strict';
+    'use strict'; 
 
-    angular.module(angular.mApp.name).factory('AssetsSvgService', ['$http', '$sce',
+    angular.module(angular.mApp.NAMESPACE.app.name).factory('AssetsSvgService', ['$http', '$sce',
 
         function ($http, $sce) {
 

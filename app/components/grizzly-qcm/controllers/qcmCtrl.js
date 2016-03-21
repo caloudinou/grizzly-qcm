@@ -7,12 +7,11 @@
 (function (angular) {
     'use strict';
 
-    angular.module(angular.mApp.name).controller(angular.mApp.NAMESPACE.qcm, ['$scope', '$rootScope', '$location',
+    angular.module(angular.mApp.NAMESPACE.qcm.name)
+        .controller(angular.mApp.NAMESPACE.qcm.controllers.default, ['$scope', 
 
-        function ($scope, $rootScope, $location) {
-
-            
-            console.log('test A');
+        function ($scope) {
+            $scope.test='test A';
         }
     ]);
-})(angular)
+})(angular);

@@ -1,22 +1,21 @@
-   (function (angular){
+(function (angular){
     'use strict';
 
-    angular.mApp.NAMESPACE.qcm= {
-        name: 'qcm',
-        controllers: {
-            default: 'asideCtrl'
+    angular.mApp.NAMESPACE.qcm ={
+        name:'qcm',
+        controllers:{
+            default:'qcmCtrl'
         },
-        routes: {
-            default:{
-                templateUrl:'/app/components/grizzly-qcm/views/show/show.html',
-                path:'/qcm'
+        routes  : {
+            default : {
+                path        :'/qcm',
+                    templateUrl : angular.mApp.NAMESPACE.app.prod  +   '/grizzly-qcm/views/show/show.html'
             }
         }
     };
-
-    angular.module(angular.mApp.NAMESPACE.qcm, [
+    
+    angular.module(angular.mApp.NAMESPACE.qcm.name, [
         'ngRoute'
     ]);
-
-
+    
 })(angular);

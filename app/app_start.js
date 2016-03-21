@@ -4,17 +4,9 @@
     /**
      * Init Main App module
      */
-    angular.module(angular.mApp.name, [
-            angular.mApp.NAMESPACE.qcm,
-            'ngRoute',
-            'ngLocale',
-            'ngMaterial',
-            'ngMessages',
-            'ngSanitize',
-            'ngAnimate'
+    angular.module(angular.mApp.NAMESPACE.app.name, [
+            angular.mApp.NAMESPACE.qcm.name,
+            'ngRoute'
     ]);
     
 })(angular);
-
-
-

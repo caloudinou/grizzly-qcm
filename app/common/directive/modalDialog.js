@@ -10,7 +10,7 @@
 (function (angular) {
     'use strict';
 
-    angular.module(angular.mApp.name).directive('modalDialog', function() {
+    angular.module(angular.mApp.NAMESPACE.app.name).directive('modalDialog', function() {
         return {
             restrict: 'E',
             scope: {
