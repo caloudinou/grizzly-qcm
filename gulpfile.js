@@ -95,6 +95,23 @@ gulp.task('build-compress-js', function() {
 });
 
 
+/**
+ * copy translate json file
+ */
+gulp.task('build-copy-json-translation', function() {
+    return gulp.src('app/translation/*.json')
+    .pipe(gulp.dest('app_prod/src/translation/'));
+});
+
+
+/**
+ * copy config json file
+ */
+gulp.task('build-copy-json-config', function() {
+    return gulp.src('app/config/*.json')
+    .pipe(gulp.dest('app_prod/src/config/'));
+});
+
 
 
 /**
@@ -140,11 +157,13 @@ gulp.task('default-css', ['dev-concat-sass','build-scss-to-css','build-clean-css
  */
 gulp.task('default-html', ['build-minify-html', 'build-index']);
 
+gulp.task('build-copy-json',['build-copy-json-translation', 'build-copy-json-config']);
+
 /**
  * this default task will launch all task of initialization
  */
 gulp.task('default', function () {
-    gulp.start('bower', 'build-init', 'default-css', 'build-concat-js', 'build-compress-js', 'default-html');
+    gulp.start('bower', 'build-init', 'default-css', 'build-concat-js', 'build-compress-js','build-copy-json', 'default-html');
 });
 
 
@@ -154,7 +173,8 @@ gulp.task('default', function () {
 gulp.task('watch', function () {
     gulp.watch(['./src/scss/*.scss','./app/**/*.scss'], ['default-css']);
     gulp.watch(['app/*.js', 'app/**/*.js'], ['build-concat-js']);
-    gulp.watch(['app/**/*.html'],['default-html']);
+    gulp.watch(['app/config/*.json','app/translation/*.json'], ['build-copy-json'])
+    gulp.watch(['app/**/*.html'], ['default-html']);
 });
 
 /**

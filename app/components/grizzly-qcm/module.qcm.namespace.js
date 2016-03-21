@@ -9,7 +9,7 @@
         routes  : {
             default : {
                 path        :'/qcm',
-                    templateUrl : angular.mApp.NAMESPACE.app.prod  +   '/grizzly-qcm/views/show/show.html'
+                    templateUrl : angular.mApp.NAMESPACE.app.prod.views  +   '/grizzly-qcm/views/show/show.html'
             }
         }
     };

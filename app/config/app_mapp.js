@@ -6,8 +6,14 @@
         angular.mApp.NAMESPACE={
             app : {
                 name : 'grizzlyLTDA-apps',
-                prod : '/src/views',
-                dev  : '/components' 
+                prod :{
+                    views:'/src/views',
+                    default:'/src'
+                } ,
+                dev  :{
+                    views: '/components',
+                    default:''
+                }  
             }
         };
     
