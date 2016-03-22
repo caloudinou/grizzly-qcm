@@ -119,7 +119,7 @@ gulp.task('build-copy-json-config', function() {
  */
 gulp.task('build-minify-html', function() {
     return gulp.src('./app/components/**/*.html')
-    //.pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('./app_prod/src/views/'));
 });
 
@@ -129,7 +129,7 @@ gulp.task('build-minify-html', function() {
 gulp.task('build-index', function() {
     return gulp.src(['app/sources/html/header.html','app/sources/html/body.html','app/sources/html/footer.html'])
     .pipe(concat('index.html'))
-    //.pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('app_prod/'));
 });
 
