@@ -7,7 +7,7 @@
     </header>
     
     <article ng-repeat="question in q.questions">
-        <header>{{ id }}
+        <header>
             <h2>{{ question.title }}</h2>
             <p>
                 {{ question.description }}
@@ -16,16 +16,22 @@
         
         <!-- md-checkbox -->
         <section ng-show="question.type_anwser == 'multiple'">
-            <md-checkbox aria-label="checkbox" ng-model="newAnswer"ng-repeat="choice in question.choice">{{ choice.anwser }}</md-checkbox>
+            <md-checkbox aria-label="checkbox" ng-model="multiple" ng-repeat="choice in question.choice">{{ choice.anwser }}</md-checkbox>
         </section>
         
         <!-- md-chip -->
-        <section ng-show="question.type_anwser == 'delete'">delete
+        <section ng-show="question.type_anwser == 'delete'">
+            <md-chips ng-model="chipsDelete" 
+                      md-max-chips="5">  
+                <md-chip-template>
+                  <strong>{{$chip.anwser}}</strong>
+                </md-chip-template>
+            </md-chips>
         </section>
         
         <!-- md-radio -->
         <section ng-show="question.type_anwser == 'single'">
-            <md-radio-group ng-model="newAnswer">
+            <md-radio-group ng-model="single">
                 
                 <md-radio-button ng-repeat="choice in question.choice" ng-value="choice">
                         {{ choice.anwser }}
@@ -35,10 +41,19 @@
         </section>
         
         <!-- md-chips -->
-        <section ng-show="question.type_anwser == 'free'">free
-            
+        <section ng-show="question.type_anwser == 'free'">
+            <md-chips ng-model="chipsfree" 
+                      placeholder="Enter an answer "
+                      secondary-placeholder="+Anwser"
+                      md-max-chips="question.max_answer">  
+                <md-chip-template>
+                  <strong>{{$chip}}</strong>
+                </md-chip-template>
+            </md-chips>
         </section>
-        <md-button ng-click="validate($index, newAnswer)">suivant</md-button>
+        
+        <!-- md-button -->
+        <md-button ng-click="validate(question, newAnswer)">suivant</md-button>
         
     </article>
     

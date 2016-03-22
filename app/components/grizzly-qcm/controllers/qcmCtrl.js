@@ -27,6 +27,7 @@
                             "title" : "Question A : la ou les reponses sont des multiple de 2",
                             "description" : "test d'une question à choix multiple",
                             "type_anwser" : "multiple",
+                            "max_answer"  : "",
                             "choice" : [
                                 { "anwser" : "Reponse 1", "check_answer" : false},
                                 { "anwser" : "Reponse 2", "check_answer" : true },
@@ -38,6 +39,7 @@
                             "title" : "Question A bis : la ou les reponses sont des multiple de 2",
                             "description" : "version chip mode test d'une question à choix multiple",
                             "type_anwser" : "delete",
+                            "max_answer"  : "",
                             "choice" : [
                                 { "anwser" : "Reponse 1", "check_answer" : false},
                                 { "anwser" : "Reponse 2", "check_answer" : true },
@@ -49,6 +51,7 @@
                             "title" : "Question B : la reponse est un multiple de 4",
                             "description" : "test d'une question à choix unique",
                             "type_anwser" : "single",
+                            "max_answer"  : "",
                             "choice" : [
                                 { "anwser" : "Reponse 1", "check_answer" : false},
                                 { "anwser" : "Reponse 2", "check_answer" : false},
@@ -57,16 +60,37 @@
                             ]
                         },
                         {
-                            "title" : "Question C : combien fait 3 fois 1",
+                            "title" : "Question C : donner deux multiple de trois compris entre 0 et 30 inclus",
                             "description" : "test d'une question à choix unique",
                             "type_anwser" : "free",
+                            "max_answer"  : "5",
                             "choice" : [
-                                { "anwser" : "3", "check_answer" : true}
+                                { "anwser" : "0", "check_answer" : true},
+                                { "anwser" : "3", "check_answer" : true},
+                                { "anwser" : "6", "check_answer" : true},
+                                { "anwser" : "9", "check_answer" : true},
+                                { "anwser" : "12", "check_answer" : true},
+                                { "anwser" : "15", "check_answer" : true},
+                                { "anwser" : "18", "check_answer" : true},
+                                { "anwser" : "21", "check_answer" : true},
+                                { "anwser" : "24", "check_answer" : true},
+                                { "anwser" : "27", "check_answer" : true},
+                                { "anwser" : "30", "check_answer" : true}
                             ]
                         }
                     ]
                 }
             ];
+            
+            angular.forEach($scope.quizz, function(q){
+                angular.forEach(q.questions, function(question){
+                    if(question.type_anwser == 'delete'){
+                        $scope.chipsDelete = angular.copy(question.choice);
+                    }
+                });
+            });
+            
+            $scope.chipsfree=[];
         }
     ]);
 })(angular);
