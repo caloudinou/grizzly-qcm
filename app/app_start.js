@@ -6,7 +6,8 @@
      */
     angular.module(angular.mApp.NAMESPACE.app.name, [
             angular.mApp.NAMESPACE.qcm.name,
-            'ngRoute'
+            'ngRoute',
+            'ngMaterial'
     ]);
     
 })(angular);

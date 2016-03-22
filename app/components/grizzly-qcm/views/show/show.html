@@ -1,6 +1,45 @@
-<section> 
-    <header>test show</header>
-    <article>
-        {{ test }}
+<section ng-repeat="q in quizz"> 
+    <header>
+        <h1>{{ q.title }}</h1>
+        <p>
+            {{ q.description }}
+        </p>
+    </header>
+    
+    <article ng-repeat="question in q.questions">
+        <header>{{ id }}
+            <h2>{{ question.title }}</h2>
+            <p>
+                {{ question.description }}
+            </p>
+        </header>
+        
+        <!-- md-checkbox -->
+        <section ng-show="question.type_anwser == 'multiple'">
+            <md-checkbox aria-label="checkbox" ng-model="newAnswer"ng-repeat="choice in question.choice">{{ choice.anwser }}</md-checkbox>
+        </section>
+        
+        <!-- md-chip -->
+        <section ng-show="question.type_anwser == 'delete'">delete
+        </section>
+        
+        <!-- md-radio -->
+        <section ng-show="question.type_anwser == 'single'">
+            <md-radio-group ng-model="newAnswer">
+                
+                <md-radio-button ng-repeat="choice in question.choice" ng-value="choice">
+                        {{ choice.anwser }}
+                </md-radio-button>
+                
+            </md-radio-group>
+        </section>
+        
+        <!-- md-chips -->
+        <section ng-show="question.type_anwser == 'free'">free
+            
+        </section>
+        <md-button ng-click="validate($index, newAnswer)">suivant</md-button>
+        
     </article>
+    
 </section>
